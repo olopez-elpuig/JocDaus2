@@ -8,31 +8,39 @@ public class MenuJuegos {
     public MenuJuegos() {
     }
 
-    public static int menu() {
+    public void menu() {
         System.out.println("3- Juego del parchis");
         System.out.println("2- Juego tres en raya");
         System.out.println("1- Lanzar los dados");
         System.out.println("0- Salir");
         System.out.println("Elige un juego:> ");
-        return scanner.nextInt();
     }
 
     public static void main(String[] args) {
+        MenuJuegos menu = new MenuJuegos();
         int lanzamientos = 0;
         int victorias = 0;
+        int in;
         Juego juego = new Juego();
 
-        for(int op = menu(); op != 0; op = menu()) {
-            ++lanzamientos;
-            boolean b = juego.jugar();
-            System.out.println(juego);
-            if (b) {
-                System.out.println("Has ganado!");
-                ++victorias;
+        do {
+            menu.menu();
+            in = scanner.nextInt();
+        switch (in){
+            case 1: juego.jugar();
+                System.out.println(juego);
+                break;
+            case 2:
+                System.out.println("No puedes jugar");
+                break;
+            case 3:
+                System.out.println("No puedes jugar");
+                break;
+            case 0:
+                System.out.println("Gracias por jugar!");
+                break;
             }
-            System.out.println("Has ganado " + victorias + " partidas");
-        }
-
+        }while (in != 0);
     }
 
     static {
